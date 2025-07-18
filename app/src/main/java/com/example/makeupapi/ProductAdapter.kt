@@ -36,7 +36,7 @@ class ProductAdapter  :ListAdapter<ResponseProduct, ProductAdapter.ProductViewVi
 productName.text=it.name
                 productBrand.text="Brand ${it.brand}"
                 productPrice.text="${it.priceSign}: ${it.price} ( ${it.currency})"
-productImage.load(it.apiFeaturedImage)
+productImage.load(it.imageLink)
 
         }
 

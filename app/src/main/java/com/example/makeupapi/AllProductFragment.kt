@@ -1,6 +1,7 @@
 package com.example.makeupapi
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,24 @@ lateinit var binding: FragmentAllProductBinding
         binding=FragmentAllProductBinding.inflate(inflater,container,false)
         adapter=ProductAdapter()
         binding.productitemrcv.adapter=adapter
+
+        var callapiserviceById=RetrofitClient.service.getAllProductById(1047)
+        callapiserviceById.enqueue(object : retrofit2.Callback<ResponseProduct>{
+            override fun onResponse(
+                call: Call<ResponseProduct>,
+                response: Response<ResponseProduct>
+            ) {
+
+if(response.code() == 200){
+    Log.i("TAG","onResponse: ${response.body()}")
+}
+
+            }
+
+            override fun onFailure(call: Call<ResponseProduct>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
 
         // Inflate the layout for this fragment
 var callapiservice=RetrofitClient.service.getAllProduct()
