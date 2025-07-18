@@ -27,11 +27,14 @@ callapiservice.enqueue(object : retrofit2.Callback<List<ResponseProduct>>{
         call: Call<List<ResponseProduct>>,
         response: Response<List<ResponseProduct>>
     ) {
-        TODO("Not yet implemented")
+
+        if (response.code()==200){
+            response.body()
+        }
     }
 
     override fun onFailure(call: Call<List<ResponseProduct>>, t: Throwable) {
-        TODO("Not yet implemented")
+
     }
 })
         return binding.root
