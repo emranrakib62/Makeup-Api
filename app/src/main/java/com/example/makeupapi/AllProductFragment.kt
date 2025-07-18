@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.makeupapi.databinding.FragmentAllProductBinding
 import okhttp3.Callback
 import retrofit2.Call
@@ -12,6 +13,10 @@ import retrofit2.Response
 
 
 class AllProductFragment : Fragment() {
+    lateinit var adapter: ProductAdapter
+
+
+
 lateinit var binding: FragmentAllProductBinding
 
 
@@ -20,6 +25,9 @@ lateinit var binding: FragmentAllProductBinding
         savedInstanceState: Bundle?
     ): View? {
         binding=FragmentAllProductBinding.inflate(inflater,container,false)
+        adapter=ProductAdapter()
+        binding.productitemrcv.adapter=adapter
+
         // Inflate the layout for this fragment
 var callapiservice=RetrofitClient.service.getAllProduct()
 callapiservice.enqueue(object : retrofit2.Callback<List<ResponseProduct>>{
@@ -30,11 +38,13 @@ callapiservice.enqueue(object : retrofit2.Callback<List<ResponseProduct>>{
 
         if (response.code()==200){
             response.body()
+adapter.submitList(response.body())
+
         }
     }
 
     override fun onFailure(call: Call<List<ResponseProduct>>, t: Throwable) {
-
+Toast.makeText(requireContext(),"${t.message}",Toast.LENGTH_LONG).show()
     }
 })
         return binding.root
