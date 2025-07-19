@@ -46,10 +46,10 @@ class ProductAdapter(var productListener: ProductListener)  :ListAdapter<Respons
 
 
             holder.binding.apply {
-productName.text=it.name
+                productName.text=it.name
                 productBrand.text="Brand ${it.brand}"
                 productPrice.text="${it.priceSign}: ${it.price} ( ${it.currency})"
-productImage.load(it.imageLink)
+                productImage.load(it.imageLink)
 
             holder.itemView.setOnClickListener{_ ->
                 productListener.ProductClickedListener(it.id!!)

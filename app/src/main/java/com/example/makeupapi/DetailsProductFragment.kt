@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import coil3.load
 import com.example.makeupapi.databinding.FragmentDetailsProductBinding
 import retrofit2.Call
 import retrofit2.Response
@@ -33,14 +34,24 @@ lateinit var binding: FragmentDetailsProductBinding
 
                 if(response.code() == 200){
                     Log.i("TAG","onResponse: ${response.body()}")
-                var product=response.body()
-
-binding.apply {
+                response.body()?.let {
 
 
+                    binding.apply {
+
+                        productName.text = it.name
+                        productBrand.text = "Brand ${it.brand}"
+                        productPrice.text = "${it.priceSign}: ${it.price} ( ${it.currency})"
+                        productImage.load(it.imageLink)
+productDescription.text=it.description
+                        productCategory.text=it.category
+                        productType.text=it.productType
+                        productTags.text=it.tagList.toString()
+
+                    }
 
 
-}
+                }
                 }
 
             }
