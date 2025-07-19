@@ -11,9 +11,12 @@ import com.example.makeupapi.databinding.ItemProductRcvBinding
 
 class ProductAdapter(var productListener: ProductListener)  :ListAdapter<ResponseProduct, ProductAdapter.ProductViewViewHolder>(COMPARATOR) {
 
+
     interface ProductListener{
 
+
         fun ProductClickedListener(productId:Int)
+
     }
 
 
@@ -47,6 +50,10 @@ productName.text=it.name
                 productBrand.text="Brand ${it.brand}"
                 productPrice.text="${it.priceSign}: ${it.price} ( ${it.currency})"
 productImage.load(it.imageLink)
+
+            holder.itemView.setOnClickListener{_ ->
+                productListener.ProductClickedListener(it.id!!)
+            }
 
         }
 

@@ -13,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Response
 
 
-class AllProductFragment : Fragment() {
+class AllProductFragment : Fragment() ,ProductAdapter.ProductListener{
     lateinit var adapter: ProductAdapter
 
 
@@ -75,5 +75,9 @@ Toast.makeText(requireContext(),"${t.message}",Toast.LENGTH_LONG).show()
 
 
 
+    }
+
+    override fun ProductClickedListener(productId: Int) {
+        TODO("Not yet implemented")
     }
 }
