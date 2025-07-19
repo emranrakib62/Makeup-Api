@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import coil3.load
 import com.example.makeupapi.databinding.FragmentDetailsProductBinding
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Response
-
+@AndroidEntryPoint
 class DetailsProductFragment : Fragment() {
 
 lateinit var binding: FragmentDetailsProductBinding

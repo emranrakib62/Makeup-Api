@@ -9,11 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.makeupapi.databinding.FragmentAllProductBinding
+import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.Callback
 import retrofit2.Call
 import retrofit2.Response
 
-
+@AndroidEntryPoint
 class AllProductFragment : Fragment() ,ProductAdapter.ProductListener{
     lateinit var adapter: ProductAdapter
 
