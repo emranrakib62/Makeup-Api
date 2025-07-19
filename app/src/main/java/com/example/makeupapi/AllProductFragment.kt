@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.makeupapi.databinding.FragmentAllProductBinding
 import okhttp3.Callback
 import retrofit2.Call
@@ -78,6 +79,9 @@ Toast.makeText(requireContext(),"${t.message}",Toast.LENGTH_LONG).show()
     }
 
     override fun ProductClickedListener(productId: Int) {
-        TODO("Not yet implemented")
+      var bundle=Bundle()
+        bundle.putInt(DetailsProductFragment.product_key,productId)
+
+        findNavController().navigate(R.id.action_allProductFragment_to_detailsProductFragment,bundle)
     }
 }

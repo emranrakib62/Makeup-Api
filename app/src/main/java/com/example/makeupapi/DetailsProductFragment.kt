@@ -22,6 +22,7 @@ lateinit var binding: FragmentDetailsProductBinding
     }
 
     companion object {
+const val product_key="product_id_key"
 
     }
 }
