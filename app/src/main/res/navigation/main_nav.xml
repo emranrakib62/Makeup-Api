@@ -10,4 +10,9 @@
         android:name="com.example.makeupapi.AllProductFragment"
         android:label="fragment_all_product"
         tools:layout="@layout/fragment_all_product" />
+    <fragment
+        android:id="@+id/detailsProductFragment"
+        android:name="com.example.makeupapi.DetailsProductFragment"
+        android:label="fragment_details_product"
+        tools:layout="@layout/fragment_details_product" />
 </navigation>

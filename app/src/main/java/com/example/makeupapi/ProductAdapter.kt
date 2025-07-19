@@ -9,7 +9,17 @@ import coil3.load
 
 import com.example.makeupapi.databinding.ItemProductRcvBinding
 
-class ProductAdapter  :ListAdapter<ResponseProduct, ProductAdapter.ProductViewViewHolder>(COMPARATOR) {
+class ProductAdapter(var productListener: ProductListener)  :ListAdapter<ResponseProduct, ProductAdapter.ProductViewViewHolder>(COMPARATOR) {
+
+    interface ProductListener{
+
+        fun ProductClickedListener(productId:Int)
+    }
+
+
+
+
+
     class ProductViewViewHolder(var binding: ItemProductRcvBinding)  :
         RecyclerView.ViewHolder(binding.root)
 
