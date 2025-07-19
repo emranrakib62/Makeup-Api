@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    id ("kotlin-kapt") // ✅ Correct
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -26,20 +29,22 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
 
     buildFeatures {
         viewBinding = true
+
     }
+
 }
-
-
 
 dependencies {
     implementation(libs.androidx.core.ktx)
@@ -51,24 +56,21 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("io.coil-kt.coil3:coil-compose:3.2.0")
-
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.2.0")
-
-
 
     val nav_version = "2.9.2"
 
-    // Jetpack Compose integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
-    // Views/Fragments integration
     implementation("androidx.navigation:navigation-fragment:$nav_version")
     implementation("androidx.navigation:navigation-ui:$nav_version")
 
-
-
-
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+}
+kapt{
+    correctErrorTypes = true
 }
