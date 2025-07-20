@@ -11,10 +11,16 @@ import com.example.makeupapi.databinding.FragmentDetailsProductBinding
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Response
+import javax.inject.Inject
+
 @AndroidEntryPoint
-class DetailsProductFragment : Fragment() {
+class DetailsProductFragment   : Fragment() {
 
 lateinit var binding: FragmentDetailsProductBinding
+
+
+@Inject
+lateinit var service: ProductService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +32,7 @@ lateinit var binding: FragmentDetailsProductBinding
         var productid=requireArguments().getInt(product_key)
 
 
-        var callapiserviceById=RetrofitClient.service.getAllProductById(1047)
+        var callapiserviceById=service.getAllProductById(1047)
         callapiserviceById.enqueue(object : retrofit2.Callback<ResponseProduct>{
             override fun onResponse(
                 call: Call<ResponseProduct>,

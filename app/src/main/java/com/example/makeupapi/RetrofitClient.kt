@@ -3,12 +3,13 @@ package com.example.makeupapi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
-@InstallIn(Singleton::class)
+@InstallIn(SingletonComponent::class)
 @Module
 object RetrofitClient {
 @Singleton
@@ -21,8 +22,11 @@ object RetrofitClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 }
+@Singleton
+@Provides
+    fun provideproductservice(retrofit: Retrofit):ProductService{
+        return retrofit.create(ProductService::class.java)
+    }
 
 
-
-    val service= retrofit.create(ProductService::class.java)
 }
